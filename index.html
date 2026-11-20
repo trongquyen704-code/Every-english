@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f7f4">
+  <meta name="description" content="Everyday English - học tiếng Anh đơn giản mỗi ngày.">
+  <title>Everyday English</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Everyday English trang chủ" data-page-link="home">
+        <span class="brand-mark">e</span>
+        <span>everyday<span class="brand-light">english</span></span>
+      </a>
+      <button class="icon-button" id="settingsBtn" aria-label="Cài đặt" title="Cài đặt">⚙</button>
+    </header>
+
+    <main id="mainContent">
+      <section class="page active" id="page-home">
+        <div class="welcome">
+          <p class="eyebrow" id="todayLabel">HỌC MỘT CHÚT MỖI NGÀY</p>
+          <h1>Hello! <span class="wave">☀</span></h1>
+          <p class="muted">Hôm nay bạn muốn học điều gì?</p>
+        </div>
+        <article class="goal-card">
+          <div class="goal-head">
+            <div><p class="eyebrow">MỤC TIÊU HÔM NAY</p><h2><span id="minutesToday">0</span> / 15 phút</h2></div>
+            <span class="goal-icon">✦</span>
+          </div>
+          <div class="progress-track"><div id="dailyBar" class="progress-fill"></div></div>
+          <p class="small muted" id="goalMessage">Bắt đầu bằng một bài học ngắn nhé.</p>
+        </article>
+        <div class="section-heading"><div><p class="eyebrow">BẮT ĐẦU HỌC</p><h2>Chọn nội dung</h2></div></div>
+        <div class="quick-grid">
+          <button class="quick-card" data-go="learn" data-learn="vocabulary"><span class="quick-icon green">Aa</span><strong>Từ vựng</strong><small>Vocabulary</small></button>
+          <button class="quick-card" data-go="learn" data-learn="sentences"><span class="quick-icon peach">“ ”</span><strong>Câu giao tiếp</strong><small>Sentences</small></button>
+          <button class="quick-card" data-go="learn" data-learn="reading"><span class="quick-icon blue">▤</span><strong>Đọc đoạn văn</strong><small>Reading</small></button>
+          <button class="quick-card" data-go="listen"><span class="quick-icon lilac">♫</span><strong>Luyện nghe</strong><small>Listening</small></button>
+        </div>
+        <div class="section-heading"><div><p class="eyebrow">HỌC NHẸ NHÀNG</p><h2>Gợi ý hôm nay</h2></div><button class="text-button" data-go="learn" data-learn="vocabulary">Xem tất cả</button></div>
+        <article class="suggestion-card" id="dailySuggestion"></article>
+      </section>
+
+      <section class="page" id="page-learn">
+        <div class="page-title"><p class="eyebrow">YOUR LEARNING SPACE</p><h1>Học tiếng Anh</h1><p class="muted">Từ dễ đến khó, từng chút một.</p></div>
+        <div class="segmented" role="tablist" aria-label="Loại bài học">
+          <button class="segment active" data-learn-tab="vocabulary">Từ vựng</button>
+          <button class="segment" data-learn-tab="sentences">Câu</button>
+          <button class="segment" data-learn-tab="reading">Đọc</button>
+        </div>
+        <div id="learnPanel"></div>
+      </section>
+
+      <section class="page" id="page-listen">
+        <div class="page-title"><p class="eyebrow">LISTEN & REPEAT</p><h1>Luyện nghe</h1><p class="muted">Nghe câu tiếng Anh, rồi thử đọc theo.</p></div>
+        <article class="panel">
+          <div class="panel-top"><span class="pill">BEGINNER · US ENGLISH</span><span class="small muted" id="listenCount">01 / 10</span></div>
+          <p class="eyebrow">NGHE CÂU NÀY</p>
+          <h2 class="listen-sentence" id="listenText">I wake up early.</h2>
+          <p class="translation hidden" id="listenTranslation">Tôi thức dậy sớm.</p>
+          <div class="audio-actions">
+            <button class="primary-button" id="playListen">▶ Nghe câu</button>
+            <button class="secondary-button" id="toggleListenTranslation">Hiện nghĩa</button>
+          </div>
+          <div class="divider"></div>
+          <div class="setting-row"><span>Tốc độ đọc</span><strong id="speedLabel">0.85x</strong></div>
+          <input type="range" id="speechRate" min="0.6" max="1.1" step="0.05" value="0.85">
+          <div class="range-labels"><span>Chậm</span><span>Tự nhiên</span></div>
+          <div class="audio-actions">
+            <button class="secondary-button full" id="prevListen">← Câu trước</button>
+            <button class="secondary-button full" id="nextListen">Câu tiếp →</button>
+          </div>
+        </article>
+        <p class="tip">Mẹo nhỏ: nghe 2 lần, nhìn câu và đọc theo 2 lần. Không cần cố nói thật nhanh.</p>
+      </section>
+
+      <section class="page" id="page-review">
+        <div class="page-title"><p class="eyebrow">A LITTLE PRACTICE</p><h1>Ôn tập</h1><p class="muted">Ôn lại để nhớ lâu hơn.</p></div>
+        <div class="review-summary">
+          <div><strong id="reviewDue">0</strong><span>Từ cần ôn</span></div>
+          <div><strong id="reviewDone">0</strong><span>Đã đánh dấu nhớ</span></div>
+        </div>
+        <article class="flashcard" id="reviewCard">
+          <p class="eyebrow">NHỚ TỪ NÀY KHÔNG?</p>
+          <h2 id="reviewWord">Breakfast</h2>
+          <p class="phonetic" id="reviewPhonetic">/ˈbrekfəst/</p>
+          <p class="translation hidden" id="reviewMeaning">Bữa sáng</p>
+          <button class="secondary-button full" id="showReviewMeaning">Hiện nghĩa</button>
+          <div class="review-actions">
+            <button class="again-button" id="reviewAgain">Ôn lại</button>
+            <button class="know-button" id="reviewKnow">Đã nhớ</button>
+          </div>
+        </article>
+        <p class="small muted center" id="reviewHint">Chọn “Đã nhớ” nếu bạn biết nghĩa của từ.</p>
+      </section>
+
+      <section class="page" id="page-progress">
+        <div class="page-title"><p class="eyebrow">YOUR JOURNEY</p><h1>Tiến độ</h1><p class="muted">Mỗi ngày tiến bộ một chút.</p></div>
+        <div class="stats-grid">
+          <article class="stat-card"><span class="stat-icon">Aa</span><strong id="statWords">0</strong><small>Từ đã học</small></article>
+          <article class="stat-card"><span class="stat-icon">“ ”</span><strong id="statSentences">0</strong><small>Câu đã học</small></article>
+          <article class="stat-card"><span class="stat-icon">◷</span><strong id="statMinutes">0</strong><small>Phút học</small></article>
+          <article class="stat-card"><span class="stat-icon">✦</span><strong id="statStreak">0</strong><small>Ngày liên tục</small></article>
+        </div>
+        <article class="panel">
+          <div class="section-heading compact"><div><p class="eyebrow">YOUR GOAL</p><h2>Mục tiêu mỗi ngày</h2></div></div>
+          <div class="setting-row"><span>Thời gian học</span><strong>15 phút</strong></div>
+          <div class="progress-track"><div id="progressBar" class="progress-fill"></div></div>
+          <p class="small muted" id="progressText">Bạn đã hoàn thành 0% mục tiêu hôm nay.</p>
+        </article>
+        <article class="panel">
+          <h2 class="panel-title">Dữ liệu của bạn</h2>
+          <p class="small muted">Tiến độ được lưu trên thiết bị này. Hãy xuất dữ liệu để sao lưu.</p>
+          <div class="stack-buttons">
+            <button class="secondary-button full" id="exportBtn">↓ Xuất dữ liệu sao lưu</button>
+            <label class="secondary-button full file-label">↑ Nhập dữ liệu sao lưu<input type="file" id="importFile" accept="application/json"></label>
+            <button class="text-button danger" id="resetBtn">Xóa toàn bộ tiến độ</button>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Điều hướng chính">
+      <button class="nav-item active" data-page="home"><span>⌂</span><small>Trang chủ</small></button>
+      <button class="nav-item" data-page="learn"><span>▤</span><small>Học</small></button>
+      <button class="nav-item" data-page="listen"><span>♫</span><small>Nghe</small></button>
+      <button class="nav-item" data-page="review"><span>↻</span><small>Ôn tập</small></button>
+      <button class="nav-item" data-page="progress"><span>▥</span><small>Tiến độ</small></button>
+    </nav>
+  </div>
+
+  <dialog id="settingsDialog" class="settings-dialog">
+    <div class="dialog-head"><h2>Cài đặt</h2><button class="icon-button" id="closeSettings">✕</button></div>
+    <p class="muted small">Everyday English · Beginner · US English</p>
+    <label class="setting-row"><span>Tốc độ phát âm mặc định</span><select id="defaultRate"><option value="0.75">0.75x</option><option value="0.85" selected>0.85x</option><option value="0.9">0.9x</option><option value="1">1.0x</option></select></label>
+    <p class="tip">Giọng đọc phụ thuộc vào giọng tiếng Anh có sẵn trên iPhone. Bạn có thể tải giọng tiếng Anh Mỹ trong phần cài đặt iOS nếu cần.</p>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
